@@ -1,0 +1,99 @@
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+.ant-layout {
+  min-height: 100vh;
+}
+
+.ant-layout-sider {
+  box-shadow: 2px 0 8px rgba(0, 0, 0, 0.15);
+}
+
+.ant-menu-item {
+  margin: 4px 0 !important;
+}
+
+.ant-table-thead > tr > th {
+  background-color: #fafafa;
+  font-weight: 600;
+}
+
+.upload-area {
+  border: 2px dashed #d9d9d9;
+  border-radius: 6px;
+  background: #fafafa;
+  padding: 20px;
+  text-align: center;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+
+.upload-area:hover {
+  border-color: #1890ff;
+}
+
+.upload-area.dragover {
+  border-color: #1890ff;
+  background: #e6f7ff;
+}
+
+.stats-card {
+  text-align: center;
+  padding: 24px;
+}
+
+.stats-number {
+  font-size: 30px;
+  font-weight: bold;
+  color: #1890ff;
+  margin-bottom: 8px;
+}
+
+.stats-label {
+  font-size: 14px;
+  color: #666;
+}
+
+.trend-positive {
+  color: #52c41a;
+}
+
+.trend-negative {
+  color: #ff4d4f;
+}
+
+.trend-neutral {
+  color: #666;
+}
+
+.page-header {
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+@media (max-width: 768px) {
+  .ant-layout-sider {
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+  }
+  
+  .ant-layout-content {
+    margin-left: 0;
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+}
