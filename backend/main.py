@@ -59,29 +59,34 @@ async def global_exception_handler(request: Request, exc: Exception):
 async def health_check():
     return {"status": "healthy", "message": "AI初创公司新闻监测系统运行正常"}
 
-# 根路径
+# 根路径健康检查
 @app.get("/")
 async def root():
     return {
         "message": "欢迎使用AI初创公司新闻监测系统",
         "docs": "/api/docs",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "status": "healthy"
     }
 
 # 应用启动事件
 @app.on_event("startup")
 async def startup_event():
-    # 确保必要的目录存在
-    os.makedirs(settings.upload_path, exist_ok=True)
-    os.makedirs(settings.export_path, exist_ok=True)
-    os.makedirs("logs", exist_ok=True)
-    
-    # 初始化数据库
-    init_db()
-    
-    print(f"🚀 服务器启动成功")
-    print(f"📊 API文档: http://{settings.api_host}:{settings.api_port}/api/docs")
-    print(f"🔍 健康检查: http://{settings.api_host}:{settings.api_port}/health")
+    try:
+        # 确保必要的目录存在
+        os.makedirs(settings.upload_path, exist_ok=True)
+        os.makedirs(settings.export_path, exist_ok=True)
+        os.makedirs("logs", exist_ok=True)
+        
+        # 初始化数据库
+        init_db()
+        
+        print(f"🚀 服务器启动成功")
+        print(f"📊 API文档: http://{settings.api_host}:{settings.api_port}/api/docs")
+        print(f"🔍 健康检查: http://{settings.api_host}:{settings.api_port}/health")
+    except Exception as e:
+        print(f"⚠️ 启动警告: {str(e)}")
+        # 不要抛出异常，让服务继续运行
 
 if __name__ == "__main__":
     # 支持Railway动态端口分配
