@@ -15,6 +15,15 @@ export default defineConfig({
   },
   build: {
     outDir: 'dist',
-    sourcemap: true
-  }
+    sourcemap: false, // Vercel部署时关闭sourcemap以减少构建时间
+    rollupOptions: {
+      output: {
+        manualChunks: {
+          vendor: ['react', 'react-dom'],
+          antd: ['antd']
+        }
+      }
+    }
+  },
+  base: '/' // 确保正确的基础路径
 })
