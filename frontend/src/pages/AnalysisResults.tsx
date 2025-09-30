@@ -10,7 +10,6 @@ import {
 import type { ColumnsType } from 'antd/es/table';
 import dayjs from 'dayjs';
 import { analysisApi, downloadFile } from '../services/api';
-import { MonthlyYoYResult, MonthlyYoYAnalysisResponse } from '../types';
 
 const { Option } = Select;
 
