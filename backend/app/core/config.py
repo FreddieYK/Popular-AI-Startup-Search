@@ -12,7 +12,7 @@ class Settings(BaseSettings):
     
     # API配置
     api_host: str = "0.0.0.0"
-    api_port: int = 8003
+    api_port: int = 8004
     api_reload: bool = True
     
     # 跨域配置

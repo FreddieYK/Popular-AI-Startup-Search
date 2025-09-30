@@ -8,7 +8,7 @@ export default defineConfig({
     port: 5173,  // 使用 Vite 默认端口
     proxy: {
       '/api': {
-        target: 'http://localhost:8003',  // 修正为正确的后端端口
+        target: 'http://localhost:8004',  // 更新为正确的后端端口
         changeOrigin: true,
       }
     }
