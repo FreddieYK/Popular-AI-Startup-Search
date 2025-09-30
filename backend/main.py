@@ -78,12 +78,18 @@ async def startup_event():
         os.makedirs(settings.export_path, exist_ok=True)
         os.makedirs("logs", exist_ok=True)
         
-        # 初始化数据库
-        init_db()
-        
         print(f"🚀 服务器启动成功")
-        print(f"📊 API文档: http://{settings.api_host}:{settings.api_port}/api/docs")
-        print(f"🔍 健康检查: http://{settings.api_host}:{settings.api_port}/health")
+        print(f"📊 API文档: /api/docs")
+        print(f"🔍 健康检查: /health")
+        
+        # 异步初始化数据库，不阻塞启动
+        try:
+            init_db()
+            print("✅ 数据库初始化成功")
+        except Exception as e:
+            print(f"⚠️ 数据库初始化警告: {str(e)}")
+            # 不要抛出异常，让服务继续运行
+            
     except Exception as e:
         print(f"⚠️ 启动警告: {str(e)}")
         # 不要抛出异常，让服务继续运行
