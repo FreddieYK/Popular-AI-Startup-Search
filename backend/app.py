@@ -84,9 +84,13 @@ async def startup_event():
     print(f"🔍 健康检查: http://{settings.api_host}:{settings.api_port}/health")
 
 if __name__ == "__main__":
+    # 支持Railway动态端口分配
+    port = int(os.getenv("PORT", settings.api_port))
+    host = os.getenv("HOST", settings.api_host)
+    
     uvicorn.run(
         app,
-        host=settings.api_host,
-        port=settings.api_port,
+        host=host,
+        port=port,
         reload=False
     )
