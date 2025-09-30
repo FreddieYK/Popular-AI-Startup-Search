@@ -11,7 +11,9 @@ from app.core.database import init_db
 
 # 导入API路由
 from app.api.companies import router as companies_router
-from app.api.analysis import router as analysis_router
+from app.api.comprehensive import router as comprehensive_router  
+from app.api.competitors import router as competitors_router
+# from app.api.analysis import router as analysis_router  # 暂时注释掉有问题的模块
 
 # 获取配置
 settings = get_settings()
@@ -36,7 +38,9 @@ app.add_middleware(
 
 # 注册API路由
 app.include_router(companies_router, prefix="/api", tags=["公司管理"])
-app.include_router(analysis_router, prefix="/api", tags=["分析统计"])
+app.include_router(comprehensive_router, prefix="/api", tags=["综合排名"])
+app.include_router(competitors_router, prefix="/api", tags=["竞争对手分析"])
+# app.include_router(analysis_router, prefix="/api", tags=["分析统计"])  # 暂时注释
 
 # 全局异常处理
 @app.exception_handler(Exception)
