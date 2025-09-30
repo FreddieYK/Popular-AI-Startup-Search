@@ -29,17 +29,10 @@ if "!commit_message!"=="" set commit_message=Initial commit
 git commit -m "!commit_message!"
 echo.
 
-:: 提示用户输入远程仓库地址
+:: 设置远程仓库
 echo [4/5] 设置远程仓库...
-echo 请在GitHub上创建新仓库，然后输入仓库地址
-echo 例如: https://github.com/yourusername/your-repo-name.git
-set /p remote_url="远程仓库URL: "
-
-if "!remote_url!"=="" (
-    echo 错误：远程仓库URL不能为空
-    pause
-    exit /b 1
-)
+set remote_url=https://github.com/FreddieYK/Popular-AI-Startup-Search.git
+echo 使用仓库地址: !remote_url!
 
 :: 添加远程仓库
 git remote add origin !remote_url! 2>nul
